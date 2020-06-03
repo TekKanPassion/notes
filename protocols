@@ -1,0 +1,40 @@
+Application Layer - HTTP / FTP (Hyper text transfer is for transferring data for viweing in a web page froma  web server where we render
+the html files) (when it is only data transfer then we use FTP / File transfer)
+Transport Layer - TCP
+Network Layer - IP
+Link Layer
+
+Client                    Web Server
+Browser HTTP              -NA-
+TCP (OS)                  TCP
+IP (Packet)               IP
+Ethernet (Cabel / DSL)    DSL
+
+it goes down from one side and comes up on the other side.
+
+
+
+
+HTTP is a protocol used for communication, usually used to communicate with internet resources or any application with a web browser
+client.
+
+REST means that the main concept you are using while designing the application is the
+Resource: for each action you want to perform you need to define a resource on which you usually do only CRUD operation,
+which is a simple task. for that its very convenient to use 4 verbs used in HTTP protocol a
+gainst the 4 CRUD operations (Get for Read, POST is for CREATE, PUT is for UPDATE and DELETE is for DELETE).
+that's unlike the older concept of RPC (Remote Procedure Call), in which you have a set of actions you want to
+perform as a result of the user's call. 
+if you think for example on how to describe a facebook like on a post, with RPC you might create services called AddLikeToPost and
+RemoveLikeFromPost, and manage it along with all your other services related to FB posts, thus you won't need to create special 
+object for Like.
+
+with REST you will have a Like object which will be managed separately with Delete and Create functions.
+It also means it will describe a separate entity in your db. that might look like a small difference, 
+but working like that would usually yield a much simpler code and a much simpler application. with that design, most of the app's logic is obvious from the object's structure (model), unlike RPC with which you would usually have to explicitly add a lot more logic.
+
+designing RESTful application is usually a lot harder because it requires you to describe complicated things in a simple manner. describing all functionalities using only CRUD functions is tricky, but after doing that your life would be a lot simpler and you will find that you will write a lot shorter methods.
+
+One more restraint REST architecture present is not to use session context when communicating with client (stateless), meaning all the information needs to understand who is the client and what he wants is passed with the web message. each call to a function is self descriptive, there is no previous conversation with the client which can be referenced in the message. therefor a client could not tell you "give me the next page" since you don't have a session to store what is the previous page and what kind of page you want, the client would have to say "my name is yuval, get me page 2 of a specific post in a specific forum". that means a bit more data would have to transfer in the communication, but think of the difference between finding a bug reported from the "get me next page" function in oppose to "get me page 2 of question id 2190836 in stack overflow".
+
+
+
